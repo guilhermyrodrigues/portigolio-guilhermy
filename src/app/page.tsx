@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Code, Database, Server, Smartphone, Cloud, Users, Calendar, ChevronDown, Menu, X, Star } from 'lucide-react';
-import { title } from 'process';
 
 // ============= DATA LAYER =============
 const portfolioData = {
@@ -78,8 +77,8 @@ const portfolioData = {
       description: "Sistema completo de e-commerce com frontend Angular e backend Spring Boot",
       tech: ["Angular", "Spring Boot", "PostgreSQL"],
       links: {
-        frontend: "https://github.com/guilhermyrodrigues/coffee-front",
-        backend: "https://github.com/guilhermyrodrigues/coffe-backend"
+        frontend: "https://lnkd.in/dDU8ahVy",
+        backend: "https://lnkd.in/dmy_2gEU"
       },
       category: "Fullstack"
     },
@@ -88,7 +87,7 @@ const portfolioData = {
       description: "Single Page Application com Angular, Spring Boot e Docker",
       tech: ["Angular", "Spring Boot", "Docker", "PostgreSQL"],
       links: {
-        github: "https://github.com/guilhermyrodrigues/book-catalog"
+        github: "https://lnkd.in/d9rzMr7B"
       },
       category: "Fullstack"
     },
@@ -97,7 +96,7 @@ const portfolioData = {
       description: "Aplicação React com Next.js consumindo API Dragon Ball",
       tech: ["React", "Next.js", "API Rest"],
       links: {
-        github: "https://github.com/guilhermyrodrigues/app-dragon-ball-next"
+        github: "https://lnkd.in/dFcBjwsb"
       },
       category: "Frontend"
     },
@@ -106,7 +105,7 @@ const portfolioData = {
       description: "Implementação de programação paralela e concorrente",
       tech: ["Java", "Multithreading"],
       links: {
-        github: "https://github.com/guilhermyrodrigues/thread-concorrency"
+        github: "https://lnkd.in/dzVi96KW"
       },
       category: "Backend"
     },
@@ -115,29 +114,20 @@ const portfolioData = {
       description: "Implementação de Design Patterns (Observer, SOLID, Criacionais, Estruturais)",
       tech: ["Java", "Design Patterns", "SOLID"],
       links: {
-        observer_front: "https://github.com/guilhermyrodrigues/frontend-observer",
-        observer_back: "https://github.com/guilhermyrodrigues/backend-observer",
-        structural: "https://github.com/guilhermyrodrigues/padroes-estruturais",
-        creational: "https://github.com/guilhermyrodrigues/padroes-criacionais",
-        solid: "https://github.com/guilhermyrodrigues/exercicios-solid"
+        observer_front: "https://lnkd.in/dg7uP8Q9",
+        observer_back: "https://lnkd.in/dbAKeiEC",
+        structural: "https://lnkd.in/dtk4PJD2",
+        creational: "https://lnkd.in/di9SiRMf",
+        solid: "https://lnkd.in/dhHai8MB"
       },
       category: "Architecture"
     },
     {
       title: "CRUD em Camadas",
       description: "Sistema CRUD implementado com arquitetura em camadas usando Spring Boot",
-      tech: ["Spring Boot", "PostgreSQL", "Swagger", "Java"],
+      tech: ["Spring Boot", "PostgreSQL", "MVC"],
       links: {
-        github: "https://github.com/guilhermyrodrigues/projeto-crud"
-      },
-      category: "Backend"
-    },
-    {
-      title: "Projeto Ecommerce",
-      description: "Projeto de e-commerce desenvolvido com Spring Boot, seguindo os 12 factores de uma aplicação moderna",
-      tech: ["Spring Boot", "PostgreSQL", "Java"],
-      links: {
-        github: "https://github.com/guilhermyrodrigues/ecommerce-backend"
+        github: "https://lnkd.in/dJ8gS92D"
       },
       category: "Backend"
     }
@@ -147,7 +137,7 @@ const portfolioData = {
 };
 
 // ============= UTILITY FUNCTIONS =============
-const getColorClasses = (color) => ({
+const getColorClasses = (color: string) => ({
   text: `text-${color}-400`,
   bg: `bg-${color}-100/10`,
   textBg: `text-${color}-200`,
@@ -158,7 +148,7 @@ const getColorClasses = (color) => ({
 // ============= REUSABLE COMPONENTS =============
 
 // Navigation Component
-const Navigation = ({ activeSection, onSectionChange }) => {
+const Navigation = ({ activeSection, onSectionChange }: { activeSection: string, onSectionChange: (section: string) => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const scrollToSection = (sectionId) => {
@@ -224,7 +214,7 @@ const Navigation = ({ activeSection, onSectionChange }) => {
 };
 
 // Social Links Component
-const SocialLinks = ({ size = "default", className = "" }) => {
+const SocialLinks = ({ size = "default", className = "" }: { size?: string, className?: string }) => {
   const iconSize = size === "large" ? 24 : 20;
   const linkClass = size === "large" 
     ? "flex items-center gap-2 px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105"
@@ -262,14 +252,14 @@ const SocialLinks = ({ size = "default", className = "" }) => {
 };
 
 // Section Header Component
-const SectionHeader = ({ title, className = "" }) => (
+const SectionHeader = ({ title, className = "" }: { title: string, className?: string }) => (
   <h2 className={`text-4xl font-bold text-center mb-12 text-gray-100 ${className}`}>
     {title}
   </h2>
 );
 
 // Skill Card Component
-const SkillCard = ({ title, skills, icon: Icon, color }) => {
+const SkillCard = ({ title, skills, icon: Icon, color }: { title: string, skills: string[], icon: any, color: string }) => {
   const colorClasses = getColorClasses(color);
   
   return (
@@ -293,7 +283,7 @@ const SkillCard = ({ title, skills, icon: Icon, color }) => {
 };
 
 // Project Links Component
-const ProjectLinks = ({ links }) => {
+const ProjectLinks = ({ links }: { links: Record<string, string> }) => {
   const linkConfigs = {
     github: { icon: Github, label: "Repositório", color: "text-gray-300 hover:text-gray-200" },
     frontend: { icon: Code, label: "Frontend", color: "text-gray-300 hover:text-gray-200" },
@@ -332,7 +322,7 @@ const ProjectLinks = ({ links }) => {
 };
 
 // Project Card Component
-const ProjectCard = ({ project }) => (
+const ProjectCard = ({ project }: { project: any }) => (
   <div className="bg-white/5 rounded-2xl p-6 border border-gray-200/10 hover:border-gray-200/20 transition-all duration-300 hover:scale-105">
     <div className="flex justify-between items-start mb-4">
       <h3 className="text-xl font-bold text-gray-100">{project.title}</h3>
@@ -356,7 +346,7 @@ const ProjectCard = ({ project }) => (
 );
 
 // Contact Card Component
-const ContactCard = ({ icon: Icon, title, content, link, color }) => (
+const ContactCard = ({ icon: Icon, title, content, link, color }: { icon: any, title: string, content: string, link?: string, color: string }) => (
   <div className="bg-white/5 rounded-2xl p-6 border border-gray-200/10">
     <Icon className="text-gray-300 mx-auto mb-4" size={32} />
     <h3 className="text-lg font-bold text-gray-100 mb-2">{title}</h3>
@@ -373,7 +363,7 @@ const ContactCard = ({ icon: Icon, title, content, link, color }) => (
 // ============= MAIN SECTIONS =============
 
 // Hero Section
-const HeroSection = ({ isVisible }) => (
+const HeroSection = ({ isVisible }: { isVisible: boolean }) => (
   <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-16">
     <div className={`text-center max-w-4xl mx-auto transition-all duration-1000 ${isVisible ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-10'}`}>
       <div className="mb-8">
