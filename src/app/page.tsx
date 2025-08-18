@@ -151,7 +151,7 @@ const getColorClasses = (color: string) => ({
 const Navigation = ({ activeSection, onSectionChange }: { activeSection: string, onSectionChange: (section: string) => void }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const scrollToSection = (sectionId) => {
+  const scrollToSection = (sectionId: string) => {
     onSectionChange(sectionId);
     setIsMenuOpen(false);
     const element = document.getElementById(sectionId);
