@@ -284,7 +284,7 @@ const SkillCard = ({ title, skills, icon: Icon, color }: { title: string, skills
 
 // Project Links Component
 const ProjectLinks = ({ links }: { links: Record<string, string> }) => {
-  const linkConfigs = {
+  const linkConfigs: Record<string, { icon: any, label: string, color: string }> = {
     github: { icon: Github, label: "Repositório", color: "text-gray-300 hover:text-gray-200" },
     frontend: { icon: Code, label: "Frontend", color: "text-gray-300 hover:text-gray-200" },
     backend: { icon: Server, label: "Backend", color: "text-gray-300 hover:text-gray-200" },
@@ -334,7 +334,7 @@ const ProjectCard = ({ project }: { project: any }) => (
     <p className="text-gray-300 mb-4 text-sm">{project.description}</p>
     
     <div className="flex flex-wrap gap-2 mb-4">
-      {project.tech.map((tech) => (
+      {project.tech.map((tech: any) => (
         <span key={tech} className="text-xs px-2 py-1 bg-gray-800/50 text-gray-200 rounded">
           {tech}
         </span>
