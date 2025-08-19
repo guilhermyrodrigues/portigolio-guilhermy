@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Github, Linkedin, Mail, Phone, MapPin, ExternalLink, Code, Database, Server, Smartphone, Cloud, Users, Calendar, ChevronDown, Menu, X, Star } from 'lucide-react';
+import { title } from 'process';
 
 // ============= DATA LAYER =============
 const portfolioData = {
@@ -130,7 +131,17 @@ const portfolioData = {
         github: "https://lnkd.in/dJ8gS92D"
       },
       category: "Backend"
-    }
+    },
+    {
+      title: "Projeto Backend Ecommerce",
+      description: "Backend completo para e-commerce com Spring Boot, PostgreSQL, Docker e Redis, utilizando o principio 12 Factor App.",
+      tech: ["Spring Boot", "PostgreSQL", "Docker", "Redis", "12 Factor App", "Flyway", "Docker Compose"],
+      links: {
+        github: "https://github.com/guilhermyrodrigues/ecommerce-backend"
+      },
+      category: "Backend"
+    },
+  
   ],
 
   navigation: ['home', 'sobre', 'skills', 'projetos', 'contato']
